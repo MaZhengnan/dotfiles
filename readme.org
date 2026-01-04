@@ -87,3 +87,13 @@ switches:
   - name: ascii_punct
     states: ["。，", "．，"]
 #+end_src
+
+From i3wm back to lightdm and reback to i3, I cannot restart fcitx5. Fix it use:
+#+begin_src sh
+    sudo nvim /usr/share/xsessions/i3.desktop
+#+end_src
+then 
+#+begin_src ini 
+Exec=i3
+Exec=dbus-run-session i3
+#+end_src
