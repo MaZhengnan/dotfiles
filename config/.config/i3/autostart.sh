@@ -124,14 +124,6 @@ fi
 #     echo "✅ 声音托盘已启动" >> $LOG_FILE
 # fi
 
-# ========== 11. Rofi 配置检查 ==========
-echo "检查 Rofi 配置..." >> $LOG_FILE
-if [ ! -f ~/.config/rofi/themes/rounded-blue.rasi ]; then
-    echo "⚠️  Rofi 主题不存在，使用默认" >> $LOG_FILE
-else
-    echo "✅ Rofi 主题已就绪" >> $LOG_FILE
-fi
-
 # ========== 发送完成通知 ==========
 sleep 2
 if command -v notify-send >/dev/null; then
