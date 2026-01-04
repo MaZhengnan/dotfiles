@@ -12,7 +12,12 @@ bind \el forward-char
 if [ -f $HOME/.config/fish/alias.fish ]
     source $HOME/.config/fish/alias.fish
 end
-
+if command -v fish_add_path >/dev/null
+    fish_add_path ~/.local/bin
+else
+    # 兼容旧版本
+    set -gx PATH ~/.local/bin $PATH
+end
 function fish_greeting
     random choice "Hi MZN!"
 end
