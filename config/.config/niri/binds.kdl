@@ -17,6 +17,7 @@ binds {
     // 另一个打开nautilus的快捷键，主要是为了在同时安装thunar和nautilus的情况下打开naultilus
     Mod+Alt+E hotkey-overlay-title=null {spawn-sh "env GSK_RENDERER=gl GTK_IM_MODULE=fcitx  nautilus";}
     Mod+D hotkey-overlay-title="程序菜单 Applauncher" { spawn "fuzzel"; }
+  // Mod+D hotkey-overlay-title="程序菜单 Applauncher" { spawn "wofi"; }
     // 锁屏
     Mod+Alt+L hotkey-overlay-title="锁屏 Lock screen" { spawn "swaylock"; } 
     Mod+Alt+V  hotkey-overlay-title="剪贴板 Clipboard" {spawn-sh "copyq toggle || clipse-gui";}

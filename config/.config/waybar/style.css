@@ -1,207 +1,114 @@
-/* =========================
- * Global
- * ========================= */
+
 * {
-    font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
-    font-size: 13px;
-    min-height: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  /* font-family: "Hack Nerd Font"; */
+  font-size: 12pt;
+  font-weight: bold;
+  border-radius: 0px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
-
-/* =========================
- * Waybar Window
- * ========================= */
+@keyframes blink_red {
+  to {
+    background-color: rgb(226, 222, 233);
+    color: rgb(26, 24, 38);
+  }
+}
+.warning, .critical, .urgent {
+  animation-name: blink_red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #ffffff;
+  background-color: transparent;
 }
-
-window#waybar.hidden {
-    opacity: 0.2;
+window > box {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  background-color: rgb(46, 52, 64);
 }
-
-/* =========================
- * Buttons / Hover
- * ========================= */
-button {
-    border: none;
-    border-radius: 0;
-    padding: 0;
+#workspaces {
+  padding-left: 0px;
+  padding-right: 4px;
 }
-
-button:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* =========================
- * Workspace
- * ========================= */
 #workspaces button {
-    padding: 0 5px;
-    margin: 0 2px;
-    background: transparent;
-    color: #ffffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
-
 #workspaces button.focused {
-    background-color: #64727D;
+  background-color: rgb(181, 232, 224);
+  color: rgb(26, 24, 38);
 }
-
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  color: rgb(26, 24, 38);
 }
-
-/* =========================
- * Common Modules (Compact)
- * ========================= */
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd,
-#privacy {
-    padding: 0 4px;
-    margin: 0 2px;
-    background: transparent;
-    color: #ffffff;
+#workspaces button.active {
+  background-color: #4c566a;
+  /* color: rgb(205,135,112); */
 }
-
-/* .modules-left label { */
-/*     font-variant: small-caps; */
+#workspaces button:hover {
+  background-color: rgb(248, 189, 150);
+  color: rgb(26, 24, 38);
+}
+tooltip {
+  background: rgb(48, 45, 65);
+}
+tooltip label {
+  color: rgb(217, 224, 238);
+}
+#custom-launcher {
+  padding-left: 8px;
+  padding-right: 6px;
+  color: rgb(201, 203, 255);
+}
+#mode, #clock, #memory, #temperature,#cpu,#mpd, #idle_inhibitor, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* #mode { */
+/* 	margin-left: 10px; */
+/* 	background-color: rgb(248, 189, 150); */
+/*     color: rgb(26, 24, 38); */
 /* } */
-
-
-/* =========================
- * Right Side Tightening
- * ========================= */
-#modules-right>widget>* {
-    padding: 0 4px;
-    margin: 0 2px;
-}
-
-/* =========================
- * Tray (most important)
- * ========================= */
+/* #memory { */
+/*   color: rgb(181, 232, 224); */
+/* } */
+/* #cpu { */
+/*   color: rgb(245, 194, 231); */
+/* } */
+/* #clock { */
+/*   color: rgb(217, 224, 238); */
+/* } */
+/* #idle_inhibitor { */
+/*   color: rgb(221, 182, 242); */
+/* } */
+/* #temperature { */
+/*   color: rgb(150, 205, 251); */
+/* } */
+/* #backlight { */
+/*   color: rgb(248, 189, 150); */
+/* } */
+/* #pulseaudio { */
+/*   color: rgb(245, 224, 220); */
+/* } */
+/* #network { */
+/*   color: #ABE9B3; */
+/* } */
+/* #network.disconnected { */
+/*   color: rgb(255, 255, 255); */
+/* } */
+/* #battery.charging, #battery.full, #battery.discharging { */
+/*   color: rgb(250, 227, 176); */
+/* } */
+/* #battery.critical:not(.charging) { */
+/*   color: rgb(242, 143, 173); */
+/* } */
 #tray {
-    padding: 0;
-    margin: 0;
-    background: transparent;
-}
-
-#tray>.item {
-    padding: 0 2px;
-    margin: 0 1px;
-}
-
-#tray>.passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-    background-color: #eb4d4b;
-}
-
-/* =========================
- * Language / Keyboard State
- * ========================= */
-#language,
-#keyboard-state {
-    padding: 0 4px;
-    margin: 0 2px;
-    min-width: unset;
-}
-
-#language {
-    background: #00b093;
-    color: #000000;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-}
-
-#keyboard-state>label {
-    padding: 0 4px;
-}
-
-#keyboard-state>label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-/* =========================
- * Battery States
- * ========================= */
-#battery.charging,
-#battery.plugged {
-    color: #ffffff;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation: blink 0.5s steps(12) infinite alternate;
-}
-
-/* =========================
- * Audio
- * ========================= */
-#pulseaudio.muted,
-#wireplumber.muted {
-    color: #888888;
-}
-
-/* =========================
- * Temperature
- * ========================= */
-#temperature.critical {
-    color: #ff6b6b;
-}
-
-/* =========================
- * Privacy
- * ========================= */
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 4px;
-    margin: 0 1px;
-}
-
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
-}
-
-/* =========================
- * Window Title (if used)
- * ========================= */
-#window {
-    margin: 0 4px;
+  padding-right: 8px;
+  padding-left: 10px;
 }
